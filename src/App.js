@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
+  const onExpensesFileLoad = (event) => {
+    const file = event.target.files[0];
+    console.log(event.target.files);
+    console.log(file);
+    var reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function (event) {
+      // The file's text will be printed here
+      console.log(event.target.result);
+    };
+
+    reader.onerror = function () {
+      console.log(reader.error);
+    };
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome to expenses analyzer!</h1>
+      <h2>Add file to analyze:</h2>
+      <input onChange={onExpensesFileLoad} type="file" accept=".csv"></input>
     </div>
   );
 }

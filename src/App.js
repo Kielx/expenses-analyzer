@@ -1,25 +1,14 @@
-function App() {
-  const onExpensesFileLoad = (event) => {
-    const file = event.target.files[0];
-    console.log(event.target.files);
-    console.log(file);
-    var reader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = function (event) {
-      // The file's text will be printed here
-      console.log(event.target.result);
-    };
+import { React, useState } from "react";
+import AddFileForm from "./components/AddFileForm";
 
-    reader.onerror = function () {
-      console.log(reader.error);
-    };
-  };
+function App() {
+  const [parsed, setParsed] = useState("");
 
   return (
     <div className="App">
       <h1>Welcome to expenses analyzer!</h1>
       <h2>Add file to analyze:</h2>
-      <input onChange={onExpensesFileLoad} type="file" accept=".csv"></input>
+      <AddFileForm parsed={parsed} setParsed={setParsed}></AddFileForm>
     </div>
   );
 }

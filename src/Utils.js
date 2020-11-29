@@ -23,6 +23,7 @@ export const readParseCSVFile = (event) => {
 
     reader.onerror = function () {
       console.log(reader.error);
+      return rej("failed");
     };
   });
 };

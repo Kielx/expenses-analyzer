@@ -14,7 +14,6 @@ function App() {
       if (data) {
         data.forEach((dataObj) => {
           if (!isNaN(Date.parse(dataObj["#Data operacji"]))) {
-            console.log(dataObj["#Saldo po operacji"].replace(" ", ""));
             myObj[dataObj["#Data operacji"]] = dataObj[
               "#Saldo po operacji"
             ].replace(" ", "");
@@ -25,8 +24,8 @@ function App() {
 
     logAll(parsed);
     setGraphData(myObj);
-    console.log(graphData);
   }, [parsed]);
+
   return (
     <div className="App">
       <h1>Welcome to expenses analyzer!</h1>

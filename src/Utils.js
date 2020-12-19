@@ -15,7 +15,6 @@ export const readParseCSVFile = (event) => {
         dynamicTyping: true,
         complete: function (results) {
           data = results.data;
-          console.log(data);
           return res(data);
         },
       });

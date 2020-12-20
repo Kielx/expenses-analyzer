@@ -7,15 +7,16 @@ import "chart.js";
 function App() {
   const [parsed, setParsed] = useState("");
   const [graphData, setGraphData] = useState({});
+  const [val, setVal] = useState("")
 
-  const logExpenses = () => {
+  const logExpenses = (searchField) => {
+    const regex = new RegExp(searchField + ".*", "gis")
     if (parsed) {
       let sum = 0;
       parsed.forEach(item => {
         if (item["#Tytuł"]) {
-          let found = item["#Tytuł"].match(/mcdonalds.*/gis)
+          let found = item["#Tytuł"].match(regex)
           if (found) {
-            console.log(item)
             sum += parseFloat(item["#Kwota"].replace(" ", ""))
           }
         }
@@ -56,7 +57,17 @@ function App() {
         min={null}
         width="50%"
       ></LineChart>
-      <button onClick={logExpenses}>Print expenses to console!</button>
+      <form>
+        <label>Testlabel</label>
+        <input type="text" placeholder="Enter expense name:" value={val} onChange={(event) => {
+          setVal(event.target.value)
+        }}></input>
+        <button type="submit" onClick={(event) => {
+          event.preventDefault()
+          logExpenses(val)
+        }}>Print expenses to console!</button>
+      </form>
+
     </div>
   );
 }

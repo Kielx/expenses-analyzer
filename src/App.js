@@ -8,6 +8,24 @@ function App() {
   const [parsed, setParsed] = useState("");
   const [graphData, setGraphData] = useState({});
 
+  const logExpenses = () => {
+    if (parsed) {
+      let sum = 0;
+      parsed.forEach(item => {
+        if (item["#Tytuł"]) {
+          let found = item["#Tytuł"].match(/mcdonalds.*/gis)
+          if (found) {
+            console.log(item)
+            sum += parseFloat(item["#Kwota"].replace(" ", ""))
+          }
+        }
+      }
+
+      )
+      console.log(sum)
+    }
+  }
+
   useEffect(() => {
     const myObj = {};
     const logAll = (data) => {
@@ -38,6 +56,7 @@ function App() {
         min={null}
         width="50%"
       ></LineChart>
+      <button onClick={logExpenses}>Print expenses to console!</button>
     </div>
   );
 }

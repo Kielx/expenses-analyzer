@@ -1,48 +1,46 @@
 import { React, useState, useEffect } from "react";
 import AddFileForm from "./components/AddFileForm";
-
-import { LineChart } from "react-chartkick";
-import "chart.js";
+import MainChart from "./components/MainChart";
 
 function App() {
   const [parsed, setParsed] = useState("");
-  const [graphData, setGraphData] = useState({});
-  const [val, setVal] = useState("")
+  const [graphData, setGraphData] = useState([]);
+  const [val, setVal] = useState("");
 
   const logExpenses = (searchField) => {
-    const regex = new RegExp(searchField + ".*", "gis")
+    const regex = new RegExp(searchField + ".*", "gis");
     if (parsed) {
       let sum = 0;
-      parsed.forEach(item => {
+      parsed.forEach((item) => {
         if (item["#Tytuł"]) {
-          let found = item["#Tytuł"].match(regex)
+          let found = item["#Tytuł"].match(regex);
           if (found) {
-            sum += parseFloat(item["#Kwota"].replace(" ", ""))
+            sum += parseFloat(item["#Kwota"].replace(" ", ""));
           }
         }
-      }
-
-      )
-      console.log(sum)
+      });
+      console.log(sum);
     }
-  }
+  };
 
   useEffect(() => {
-    const myObj = {};
-    const logAll = (data) => {
-      if (data) {
-        data.forEach((dataObj) => {
-          if (!isNaN(Date.parse(dataObj["#Data operacji"]))) {
-            myObj[dataObj["#Data operacji"]] = dataObj[
-              "#Saldo po operacji"
-            ].replace(" ", "");
+    let temp = [];
+    if (parsed) {
+      temp.push(
+        parsed.map((data) => {
+          if (
+            data["#Data operacji"] != null &&
+            !isNaN(Date.parse(data["#Data operacji"]))
+          ) {
+            return {
+              x: data["#Data operacji"],
+              y: parseInt(data["#Saldo po operacji"].replace(" ", "")),
+            };
           }
-        });
-      }
-    };
-
-    logAll(parsed);
-    setGraphData(myObj);
+        })
+      );
+    }
+    setGraphData(...temp);
   }, [parsed]);
 
   return (
@@ -50,24 +48,27 @@ function App() {
       <h1>Welcome to expenses analyzer!</h1>
       <h2>Add file to analyze:</h2>
       <AddFileForm parsed={parsed} setParsed={setParsed}></AddFileForm>
-      <LineChart
-        style={{ width: "50%" }}
-        data={graphData}
-        decimal=","
-        min={null}
-        width="50%"
-      ></LineChart>
+      <MainChart graphData={graphData}></MainChart>
       <form>
         <label>Testlabel</label>
-        <input type="text" placeholder="Enter expense name:" value={val} onChange={(event) => {
-          setVal(event.target.value)
-        }}></input>
-        <button type="submit" onClick={(event) => {
-          event.preventDefault()
-          logExpenses(val)
-        }}>Print expenses to console!</button>
+        <input
+          type="text"
+          placeholder="Enter expense name:"
+          value={val}
+          onChange={(event) => {
+            setVal(event.target.value);
+          }}
+        ></input>
+        <button
+          type="submit"
+          onClick={(event) => {
+            event.preventDefault();
+            logExpenses(val);
+          }}
+        >
+          Print expenses to console!
+        </button>
       </form>
-
     </div>
   );
 }

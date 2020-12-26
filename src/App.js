@@ -26,21 +26,21 @@ function App() {
   useEffect(() => {
     let temp = [];
     if (parsed) {
-      temp.push(
-        parsed.map((data) => {
-          if (
-            data["#Data operacji"] != null &&
-            !isNaN(Date.parse(data["#Data operacji"]))
-          ) {
-            return {
-              x: data["#Data operacji"],
-              y: parseInt(data["#Saldo po operacji"].replace(" ", "")),
-            };
-          }
-        })
-      );
+      temp = parsed.map((data) => {
+        if (
+          data["#Data operacji"] != null &&
+          !isNaN(Date.parse(data["#Data operacji"]))
+        ) {
+          return {
+            x: data["#Data operacji"],
+            y: parseInt(data["#Saldo po operacji"].replace(" ", "")),
+          };
+        } else return null;
+      });
     }
-    setGraphData(...temp);
+
+    temp = temp.filter((val) => val != null);
+    setGraphData(temp);
   }, [parsed]);
 
   return (

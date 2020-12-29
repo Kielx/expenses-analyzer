@@ -24,7 +24,13 @@ function App() {
   };
 
   useEffect(() => {
-    let temp = [];
+    let temp = [
+      { x: "2020-05-01", y: 3500 },
+      { x: "2020-05-08", y: 2000 },
+      { x: "2020-06-03", y: 3000 },
+      { x: "2020-06-31", y: 200 },
+      { x: "2020-07-01", y: 3300 },
+    ];
     if (parsed) {
       temp = parsed.map((data) => {
         if (

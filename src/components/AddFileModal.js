@@ -1,32 +1,42 @@
 import { React, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import AddFileForm from "./AddFileForm";
+import { readParseCSVFile } from "../Utils";
 
 export default function AddFileModal(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  let parsedFile;
 
   return (
     <>
       <Button variant="outline-light" onClick={handleShow}>
-        Launch demo modal
+        Choose a file to analyze
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Pick a file you would like to analyze</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <AddFileForm
-            parsed={props.parsed}
-            setParsed={props.setParsed}
-          ></AddFileForm>
+          <input
+            onChange={async (event) => {
+              parsedFile = await readParseCSVFile(event);
+            }}
+            type="file"
+            accept=".csv"
+          ></input>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              props.setParsed(parsedFile);
+              handleClose();
+            }}
+          >
             Save Changes
           </Button>
         </Modal.Footer>

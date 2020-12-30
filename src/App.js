@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
-import AddFileForm from "./components/AddFileForm";
 import MainChart from "./components/MainChart";
+import MainNavbar from "./components/MainNavbar";
 
 function App() {
   const [parsed, setParsed] = useState("");
@@ -45,9 +45,11 @@ function App() {
 
   return (
     <div className="App">
+      <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
+      {/*<MainJumbotron parsed={parsed} setParsed={setParsed}></MainJumbotron>*/}
       <h1>Welcome to expenses analyzer!</h1>
       <h2>Add file to analyze:</h2>
-      <AddFileForm parsed={parsed} setParsed={setParsed}></AddFileForm>
+
       <MainChart graphData={graphData}></MainChart>
       <form>
         <label>Testlabel</label>

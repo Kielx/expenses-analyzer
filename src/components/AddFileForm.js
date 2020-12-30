@@ -12,13 +12,6 @@ export default function AddFileForm(props) {
         type="file"
         accept=".csv"
       ></input>
-      <button
-        onClick={() => {
-          console.log(props.parsed);
-        }}
-      >
-        Click me to log parsed file to console
-      </button>
     </div>
   );
 }

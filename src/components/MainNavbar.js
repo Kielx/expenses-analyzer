@@ -4,7 +4,7 @@ import AddFileModal from "./AddFileModal";
 
 export default function MainNavbar(props) {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" className="justify-content-between">
       <Navbar.Brand href="#home">
         <img
           alt=""

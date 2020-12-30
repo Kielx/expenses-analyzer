@@ -30,6 +30,9 @@ export default function AddFileModal(props) {
           ></input>
         </Modal.Body>
         <Modal.Footer>
+          <Button variant="outline-danger" onClick={handleClose}>
+            Cancel
+          </Button>
           <Button
             variant="primary"
             onClick={() => {

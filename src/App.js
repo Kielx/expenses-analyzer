@@ -47,8 +47,6 @@ function App() {
     <div className="App">
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
       {/*<MainJumbotron parsed={parsed} setParsed={setParsed}></MainJumbotron>*/}
-      <h1>Welcome to expenses analyzer!</h1>
-      <h2>Add file to analyze:</h2>
 
       <MainChart graphData={graphData}></MainChart>
       <form>

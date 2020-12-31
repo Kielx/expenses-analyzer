@@ -31,7 +31,7 @@
     <a href="https://github.com/Kielx/expenses-analyzer"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Kielx/expenses-analyzer">View Demo</a>
+    <a href="https://kielx.github.io/expenses-analyzer/">View Demo</a>
     ·
     <a href="https://github.com/Kielx/expenses-analyzer/issues">Expenses-analyzer Bug</a>
     ·

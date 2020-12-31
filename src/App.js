@@ -53,9 +53,6 @@ function App() {
   return (
     <div className="App">
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
-      <button onClick={() => console.log(calculateBalance(parsed))}>
-        asadf
-      </button>
       <MainChart graphData={graphData}></MainChart>
       <Container fluid>
         <Row>

@@ -15,6 +15,7 @@ export default function MainChart(props) {
     <ResponsiveContainer width={"100%"} height={400}>
       <LineChart
         width={1200}
+
         data={props.graphData}
         margin={{ top: 50, right: 60, bottom: 50, left: 50 }}
       >

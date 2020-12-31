@@ -26,6 +26,51 @@ export const readParseCSVFile = (event) => {
         return rej("failed");
       };
     }
-
   });
 };
+
+export const calculateBalance = (file) => {
+  const temp = [];
+  let balance = 0;
+  let negatives = [];
+  let positives = [];
+  let negativeBalance = 0;
+  let positiveBalance = 0;
+
+  if (file) {
+    file.forEach((item) => {
+      if (item["#Kwota"] !== undefined && parseInt(item["#Kwota"])) {
+        temp.push(
+          parseFloat(item["#Kwota"].replace(/ /g, "").replace(/,/g, "."))
+        );
+      }
+    });
+
+    balance = temp.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    });
+
+    negatives = temp.filter((value) => {
+      return value <= 0;
+    });
+
+    positives = temp.filter((value) => {
+      return value >= 0;
+    });
+
+    negativeBalance = negatives.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    });
+
+    positiveBalance = positives.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    });
+  }
+
+  return {
+    balance,
+    negativeBalance,
+    positiveBalance,
+  };
+};
+//.replace(/ /g, "").replace(/,/g, ".")

@@ -1,6 +1,11 @@
 import { React, useState, useEffect } from "react";
+
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+
 import MainChart from "./components/MainChart";
 import MainNavbar from "./components/MainNavbar";
+import MainCard from "./components/MainCard";
 
 function App() {
   const [parsed, setParsed] = useState("");
@@ -46,9 +51,24 @@ function App() {
   return (
     <div className="App">
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
-      {/*<MainJumbotron parsed={parsed} setParsed={setParsed}></MainJumbotron>*/}
-
       <MainChart graphData={graphData}></MainChart>
+      <Container fluid>
+        <Row>
+          <MainCard
+            cardIcon={<i className="far fa-money-bill-alt fa-2x"></i>}
+            cardHeader="Income over time"
+            bg="success"
+            cardTitle="Total income in selected  time period:"
+            cardText={
+              graphData.length !== 0
+                ? graphData[graphData.length - 1]["y"] - graphData[0]["y"]
+                : "Insert a file first"
+            }
+          ></MainCard>
+          <MainCard></MainCard>
+          <MainCard></MainCard>
+        </Row>
+      </Container>
       <form>
         <label>Testlabel</label>
         <input

@@ -12,7 +12,7 @@ import {
 
 export default function MainChart(props) {
   return (
-    <ResponsiveContainer width={"99%"} height={400}>
+    <ResponsiveContainer width={"100%"} height={400}>
       <LineChart
         width={1200}
         data={props.graphData}

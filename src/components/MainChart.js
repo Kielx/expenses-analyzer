@@ -22,7 +22,7 @@ export default function MainChart(props) {
         <YAxis domain={["auto", "auto"]} />
         <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
         <Line
-          type="basis"
+          type="monotone"
           dataKey="y"
           stroke="blue"
           name="Saldo"

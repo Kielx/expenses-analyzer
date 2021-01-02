@@ -13,6 +13,7 @@ function App() {
   const [parsed, setParsed] = useState("");
   const [graphData, setGraphData] = useState([]);
   const [val, setVal] = useState("");
+  const [cards, setCards] = useState(["mcdonalds", "orlen", "sklep"]);
 
   const logExpenses = (searchField) => {
     const regex = new RegExp(searchField + ".*", "gis");
@@ -28,6 +29,21 @@ function App() {
       });
       return sum;
     }
+  };
+
+  const displayCards = (cardsList) => {
+    const mappedCards = cardsList.map((card) => {
+      return (
+        <MainCard
+          cardHeader={card}
+          cardTitle={`Money spent on ${card}`}
+          cardText={logExpenses(card)}
+          cards={cards}
+          setCards={setCards}
+        ></MainCard>
+      );
+    });
+    return mappedCards;
   };
 
   useEffect(() => {
@@ -81,7 +97,7 @@ function App() {
             cardText={
               graphData.length !== 0
                 ? calculateBalance(parsed).balance.toFixed(2)
-                : "Insert a file first"
+                : "0"
             }
           ></MainCard>
           <MainCard
@@ -92,7 +108,7 @@ function App() {
             cardText={
               graphData.length !== 0
                 ? calculateBalance(parsed).negativeBalance.toFixed(2)
-                : "Insert a file first"
+                : "0"
             }
           ></MainCard>
           <MainCard
@@ -103,23 +119,25 @@ function App() {
             cardText={
               graphData.length !== 0
                 ? calculateBalance(parsed).positiveBalance.toFixed(2)
-                : "Insert a file first"
+                : "0"
             }
           ></MainCard>
         </Row>
         <Row>
           <MainCard
-            cardHeader="Money spent on Mcdonald's"
-            cardTitle="McDonald's"
+            cardHeader="Mcdonald's"
+            cardTitle="Money spent on McDonald's"
             cardText={logExpenses("Mcdonald")}
+            bg="warning"
           ></MainCard>
+          {displayCards(cards)}
         </Row>
       </Container>
       <form>
         <label>Testlabel</label>
         <input
           type="text"
-          placeholder="Enter expense name:"
+          placeholder="Enter expense you would like to display:"
           value={val}
           onChange={(event) => {
             setVal(event.target.value);
@@ -129,10 +147,10 @@ function App() {
           type="submit"
           onClick={(event) => {
             event.preventDefault();
-            logExpenses(val);
+            setCards((cards) => [...cards, val]);
           }}
         >
-          Print expenses to console!
+          Add expense
         </button>
       </form>
     </div>

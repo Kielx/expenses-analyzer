@@ -10,7 +10,7 @@ export default function DynamicCard(props) {
       <Card
         bg={props.bg ? props.bg : ""}
         className="mb-2"
-        text={props.bg ? "white" : "dark"}
+        text={props.bg === "light" || !props.bg ? "dark" : "white"}
       >
         <Card.Header as="h5" className={"d-flex justify-content-between"}>
           <>

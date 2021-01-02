@@ -9,11 +9,12 @@ import MainCard from "./components/MainCard";
 
 import { parseDataForGraphUsage, logExpenses, calculateBalance } from "./Utils";
 import DynamicCard from "./components/DynamicCard";
+import AddCardModal from "./components/AddCardModal";
 
 function App() {
   const [parsed, setParsed] = useState("");
   const [graphData, setGraphData] = useState([]);
-  const [val, setVal] = useState("");
+
   const [cards, setCards] = useState([
     {
       cardHeader: "Mcdonalds",
@@ -89,29 +90,10 @@ function App() {
           ></MainCard>
         </Row>
         <hr />
-        <>
-          <h3>Custom expense cards</h3>
-          <form>
-            <label>Testlabel</label>
-            <input
-              type="text"
-              placeholder="Enter expense you would like to display:"
-              value={val}
-              onChange={(event) => {
-                setVal(event.target.value);
-              }}
-            ></input>
-            <button
-              type="submit"
-              onClick={(event) => {
-                event.preventDefault();
-                setCards((cards) => [...cards, { cardHeader: val }]);
-              }}
-            >
-              Add expense
-            </button>
-          </form>
-        </>
+        <div className="d-flex justify-content-between">
+          <h3>Custom expense cards: </h3>
+          <AddCardModal setCards={setCards}></AddCardModal>
+        </div>
         <br />
         <Row>{displayCards(cards)}</Row>
       </Container>

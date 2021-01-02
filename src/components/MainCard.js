@@ -4,9 +4,13 @@ import Col from "react-bootstrap/Col";
 
 export default function MainCard(props) {
   return (
-    <Col xs={12} md={4}>
-      <Card bg={props.bg ? props.bg : "primary"} className="mb-2" text="light">
-        <Card.Header>
+    <Col xs={12} md={6} lg={4}>
+      <Card
+        bg={props.bg ? props.bg : ""}
+        className="mb-2"
+        text={props.bg ? "white" : "dark"}
+      >
+        <Card.Header as="h5">
           {props.cardIcon} {props.cardHeader}
         </Card.Header>
         <Card.Body>

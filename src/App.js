@@ -26,7 +26,7 @@ function App() {
           }
         }
       });
-      console.log(sum);
+      return sum;
     }
   };
 
@@ -105,6 +105,13 @@ function App() {
                 ? calculateBalance(parsed).positiveBalance.toFixed(2)
                 : "Insert a file first"
             }
+          ></MainCard>
+        </Row>
+        <Row>
+          <MainCard
+            cardHeader="Money spent on Mcdonald's"
+            cardTitle="McDonald's"
+            cardText={logExpenses("Mcdonald")}
           ></MainCard>
         </Row>
       </Container>

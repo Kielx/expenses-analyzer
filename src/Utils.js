@@ -73,4 +73,39 @@ export const calculateBalance = (file) => {
     positiveBalance,
   };
 };
-//.replace(/ /g, "").replace(/,/g, ".")
+
+export const logExpenses = (searchField, parsedFile) => {
+  const regex = new RegExp(searchField + ".*", "gis");
+  if (parsedFile) {
+    let sum = 0;
+    parsedFile.forEach((item) => {
+      if (item["#Tytuł"]) {
+        let found = item["#Tytuł"].match(regex);
+        if (found) {
+          sum += parseFloat(item["#Kwota"].replace(" ", ""));
+        }
+      }
+    });
+    return sum;
+  }
+};
+
+export const parseDataForGraphUsage = (parsed) => {
+  let temp = [];
+  if (parsed) {
+    temp = parsed.map((data) => {
+      if (
+        data["#Data operacji"] != null &&
+        !isNaN(Date.parse(data["#Data operacji"]))
+      ) {
+        return {
+          x: data["#Data operacji"],
+          y: parseInt(data["#Saldo po operacji"].replace(" ", "")),
+        };
+      } else return null;
+    });
+  }
+
+  temp = temp.filter((val) => val != null);
+  return temp;
+};

@@ -2,10 +2,11 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import CountUp from "react-countup";
+import CardDeleteButton from "./CardDeleteButton";
 
-export default function MainCard(props) {
+export default function DynamicCard(props) {
   return (
-    <Col xs={12} md={6} lg={4}>
+    <Col xs={12} md={6} lg={3}>
       <Card
         bg={props.bg ? props.bg : ""}
         className="mb-2"
@@ -17,6 +18,11 @@ export default function MainCard(props) {
               {props.cardIcon ? <i className={props.cardIcon}></i> : ""}{" "}
               {props.cardHeader}
             </div>
+            <CardDeleteButton
+              cardHeader={props.cardHeader}
+              cards={props.cards}
+              setCards={props.setCards}
+            ></CardDeleteButton>
           </>
         </Card.Header>
         <Card.Body>

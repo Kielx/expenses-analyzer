@@ -8,7 +8,9 @@ export default function CardDeleteButton(props) {
       onClick={(event) => {
         event.preventDefault();
         const myArr = [...props.cards];
-        const index = myArr.indexOf(props.cardHeader);
+        const index = myArr.findIndex(
+          (index) => index.cardHeader === props.cardHeader
+        );
         if (index !== -1) {
           myArr.splice(index, 1);
           props.setCards(myArr);

@@ -81,7 +81,7 @@ export default function AddCardModal(props) {
                   &#xf07a; Shopping
                 </option>
                 <option value="fas fa-hamburger fa-2x">
-                  &#xf07a; Junk food
+                  &#xf805; Junk food
                 </option>
               </Form.Control>
             </Form.Group>

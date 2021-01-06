@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import MainChart from "./components/MainChart";
 import MainNavbar from "./components/MainNavbar";
 import MainCard from "./components/MainCard";
+import MyResponsivePie from "./components/MyResponsivePie";
 
 import { parseDataForGraphUsage, logExpenses, calculateBalance } from "./Utils";
 import DynamicCard from "./components/DynamicCard";
@@ -45,8 +46,17 @@ function App() {
     return mappedCards;
   };
 
+  const onceAgainMapped = cards.map((card) => {
+    return {
+      id: card.cardHeader,
+      value: Math.abs(logExpenses(card.cardHeader, parsed)),
+    };
+  });
+
   useEffect(() => {
-    setGraphData(parseDataForGraphUsage(parsed));
+    if (parsed.length !== 0) {
+      setGraphData(parseDataForGraphUsage(parsed));
+    }
   }, [parsed]);
 
   return (
@@ -96,6 +106,13 @@ function App() {
         </div>
         <br />
         <Row>{displayCards(cards)}</Row>
+        {parsed ? (
+          <Row style={{ height: 500 }}>
+            <MyResponsivePie data={onceAgainMapped}></MyResponsivePie>
+          </Row>
+        ) : (
+          ""
+        )}
       </Container>
     </div>
   );

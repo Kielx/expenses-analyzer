@@ -12,7 +12,7 @@ export default function AddFileModal(props) {
 
   return (
     <>
-      <Button variant="outline-primary" onClick={handleShow}>
+      <Button variant="outline-light" onClick={handleShow}>
         Choose a file to analyze
       </Button>
 

@@ -15,7 +15,7 @@ export default function MyResponsivePie(props) {
       innerRadius={0.5}
       padAngle={2}
       cornerRadius={3}
-      colors={{ scheme: "nivo" }}
+      colors={{ scheme: "brown_blueGreen" }}
       borderWidth={1}
       borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
       radialLabelsSkipAngle={10}
@@ -47,13 +47,13 @@ export default function MyResponsivePie(props) {
       fill={[
         {
           match: {
-            id: "Orlen",
+            id: "Apteka",
           },
           id: "dots",
         },
         {
           match: {
-            id: "Mcdonalds",
+            id: "Payu",
           },
           id: "lines",
         },

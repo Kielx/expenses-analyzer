@@ -12,7 +12,7 @@ export default function ExpensesTable(props) {
     );
   });
   return (
-    <Table size="sm" striped bordered hover responsive="lg">
+    <Table size="sm" striped bordered hover responsive="xl">
       <thead>
         <tr>
           <th>#</th>

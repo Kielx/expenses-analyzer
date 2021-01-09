@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
 import MainChart from "./components/MainChart";
@@ -8,9 +9,15 @@ import MainNavbar from "./components/MainNavbar";
 import MainCard from "./components/MainCard";
 import MyResponsivePie from "./components/MyResponsivePie";
 
-import { parseDataForGraphUsage, logExpenses, calculateBalance } from "./Utils";
+import {
+  parseDataForGraphUsage,
+  logExpenses,
+  calculateBalance,
+  prepareExpensesData,
+} from "./Utils";
 import DynamicCard from "./components/DynamicCard";
 import AddCardModal from "./components/AddCardModal";
+import ExpensesTable from "./components/ExpensesTable";
 
 function App() {
   const [parsed, setParsed] = useState("");
@@ -46,12 +53,14 @@ function App() {
     return mappedCards;
   };
 
-  const onceAgainMapped = cards.map((card) => {
-    return {
-      id: card.cardHeader,
-      value: Math.abs(logExpenses(card.cardHeader, parsed)),
-    };
-  });
+  const onceAgainMapped = prepareExpensesData(parsed)
+    .slice(0, 10)
+    .map((item) => {
+      return {
+        id: item.item,
+        value: Math.abs(item.amount),
+      };
+    });
 
   useEffect(() => {
     if (parsed.length !== 0) {
@@ -107,8 +116,14 @@ function App() {
         <br />
         <Row>{displayCards(cards)}</Row>
         {parsed ? (
-          <Row style={{ height: 500 }}>
-            <MyResponsivePie data={onceAgainMapped}></MyResponsivePie>
+          <Row style={{ height: 300 }}>
+            <Col>
+              <MyResponsivePie data={onceAgainMapped}></MyResponsivePie>
+            </Col>
+
+            <Col>
+              <ExpensesTable data={prepareExpensesData(parsed)}></ExpensesTable>
+            </Col>
           </Row>
         ) : (
           ""

@@ -127,11 +127,11 @@ function App() {
         <br />
         {parsed ? (
           <Row>
-            <Col md={12} xl={6} style={{ height: "40em" }}>
+            <Col md={12} xl={6} style={{ minHeight: "20em" }}>
               <MyResponsivePie data={onceAgainMapped}></MyResponsivePie>
             </Col>
 
-            <Col md={12} xl={6} style={{ height: "40em" }}>
+            <Col md={12} xl={6}>
               <ExpensesTable data={prepareExpensesData(parsed)}></ExpensesTable>
             </Col>
           </Row>

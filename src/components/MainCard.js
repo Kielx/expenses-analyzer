@@ -7,9 +7,9 @@ export default function MainCard(props) {
   return (
     <Col xs={12} md={6} lg={4}>
       <Card
-        bg={props.bg ? props.bg : ""}
+        border={props.bg ? props.bg : ""}
         className="mb-2"
-        text={props.bg ? "white" : "dark"}
+        text={props.bg ? props.bg : ""}
       >
         <Card.Header as="h5" className={"d-flex justify-content-between"}>
           <>

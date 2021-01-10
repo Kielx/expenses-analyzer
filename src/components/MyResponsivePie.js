@@ -8,6 +8,33 @@ import { ResponsivePie } from "@nivo/pie";
 // you'll often use just a few of them.
 
 export default function MyResponsivePie(props) {
+  function adjust(color, amount) {
+    return (
+      "#" +
+      color
+        .replace(/^#/, "")
+        .replace(/../g, (color) =>
+          (
+            "0" +
+            Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(
+              16
+            )
+          ).substr(-2)
+        )
+    );
+  }
+
+  const generateColors = (color) => {
+    const colorArray = [];
+    let val = 5;
+
+    props.data.forEach((col) => {
+      colorArray.push(adjust(color, val));
+      val += 10;
+    });
+    return colorArray;
+  };
+
   return (
     <ResponsivePie
       data={props.data}
@@ -15,7 +42,7 @@ export default function MyResponsivePie(props) {
       innerRadius={0.8}
       padAngle={2}
       cornerRadius={0}
-      colors={{ scheme: "blues" }}
+      colors={generateColors("#E74C3C")}
       borderWidth={1}
       borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
       enableRadialLabels={false}

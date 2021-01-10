@@ -8,6 +8,7 @@ export default function DynamicCard(props) {
   return (
     <Col xs={12} md={6} lg={3}>
       <Card
+        style={{ animation: "htmlFadeIn 0.5s", transition: "opacity 0.5s" }}
         bg={props.bg ? props.bg : ""}
         className="mb-2"
         text={props.bg === "light" || !props.bg ? "dark" : "white"}

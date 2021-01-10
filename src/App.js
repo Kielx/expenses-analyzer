@@ -9,6 +9,8 @@ import MainNavbar from "./components/MainNavbar";
 import MainCard from "./components/MainCard";
 import MyResponsivePie from "./components/MyResponsivePie";
 
+import ScrollTopArrow from "./components/ScrollTopArrow";
+
 import {
   parseDataForGraphUsage,
   logExpenses,
@@ -139,6 +141,7 @@ function App() {
           ""
         )}
       </Container>
+      <ScrollTopArrow></ScrollTopArrow>
     </div>
   );
 }

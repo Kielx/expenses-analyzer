@@ -18,6 +18,7 @@ export default function MyResponsivePie(props) {
       colors={{ scheme: "blues" }}
       borderWidth={1}
       borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
+      enableRadialLabels={false}
       radialLabelsSkipAngle={10}
       radialLabelsTextColor="#333333"
       radialLabelsLinkColor={{ from: "color" }}

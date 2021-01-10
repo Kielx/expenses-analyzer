@@ -20,8 +20,8 @@ export default function MainChart(props) {
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="green" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="green" stopOpacity={0.3} />
+            <stop offset="5%" stopColor="#17B697" stopOpacity={0.8} />
+            <stop offset="95%" stopColor="#17B697" stopOpacity={0.3} />
           </linearGradient>
         </defs>
         <XAxis dataKey="x" angle={30} dx={20} dy={20} />
@@ -31,12 +31,12 @@ export default function MainChart(props) {
         <Area
           type="monotone"
           dataKey="y"
-          stroke="black"
+          stroke="#1DA78C"
           fillOpacity={1}
           fill="url(#colorUv)"
-          name="Saldo"
+          name="Balance"
           unit="zł"
-          strokeWidth={2}
+          strokeWidth={1}
         />
         <Tooltip />
       </AreaChart>

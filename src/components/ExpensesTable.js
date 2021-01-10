@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 export default function ExpensesTable(props) {
   const tab = props.data.slice(0, 10).map((item, index) => {
     return (
-      <tr>
+      <tr key={index}>
         <td>{index + 1}</td>
         <td>{item.item}</td>
         <td>{item.amount}</td>
@@ -12,7 +12,7 @@ export default function ExpensesTable(props) {
     );
   });
   return (
-    <Table size="sm" striped bordered hover responsive="xl">
+    <Table striped bordered hover responsive="xl">
       <thead>
         <tr>
           <th>#</th>

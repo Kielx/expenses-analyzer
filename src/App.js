@@ -37,9 +37,10 @@ function App() {
   ]);
 
   const displayCards = (cardsList) => {
-    const mappedCards = cardsList.map((card) => {
+    const mappedCards = cardsList.map((card, index) => {
       return (
         <DynamicCard
+          key={index}
           cardHeader={card.cardHeader}
           cardTitle={card.cardTitle}
           cardText={logExpenses(card.cardHeader, parsed)}
@@ -71,8 +72,14 @@ function App() {
   return (
     <div className="App">
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
-      <MainChart graphData={graphData}></MainChart>
-      <Container fluid>
+
+      <Container>
+        <br />
+        <h3>Dashboard</h3>
+
+        <Row>
+          <MainChart graphData={graphData}></MainChart>
+        </Row>
         <Row>
           <MainCard
             cardIcon="far fa-money-bill-alt fa-2x"
@@ -81,8 +88,8 @@ function App() {
             cardTitle="Total income/losses in selected  time period:"
             cardText={
               graphData.length !== 0
-                ? calculateBalance(parsed).balance.toFixed(2)
-                : "0"
+                ? parseInt(calculateBalance(parsed).balance.toFixed(2))
+                : 0
             }
           ></MainCard>
           <MainCard
@@ -92,8 +99,8 @@ function App() {
             cardTitle="Total losses in selected time period:"
             cardText={
               graphData.length !== 0
-                ? calculateBalance(parsed).negativeBalance.toFixed(2)
-                : "0"
+                ? parseInt(calculateBalance(parsed).negativeBalance.toFixed(2))
+                : 0
             }
           ></MainCard>
           <MainCard
@@ -103,8 +110,8 @@ function App() {
             cardTitle="Total income in selected time period:"
             cardText={
               graphData.length !== 0
-                ? calculateBalance(parsed).positiveBalance.toFixed(2)
-                : "0"
+                ? parseInt(calculateBalance(parsed).positiveBalance.toFixed(2))
+                : 0
             }
           ></MainCard>
         </Row>
@@ -115,13 +122,16 @@ function App() {
         </div>
         <br />
         <Row>{displayCards(cards)}</Row>
+        <hr />
+        <h3>Top 10 expenses in selected time period: </h3>
+        <br />
         {parsed ? (
-          <Row style={{ height: 300 }}>
-            <Col xs={12} md={6}>
+          <Row>
+            <Col md={12} xl={6} style={{ height: "40em" }}>
               <MyResponsivePie data={onceAgainMapped}></MyResponsivePie>
             </Col>
 
-            <Col xs={12} md={6}>
+            <Col md={12} xl={6} style={{ height: "40em" }}>
               <ExpensesTable data={prepareExpensesData(parsed)}></ExpensesTable>
             </Col>
           </Row>

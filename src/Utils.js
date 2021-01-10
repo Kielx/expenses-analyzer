@@ -126,7 +126,6 @@ export const prepareExpensesData = (parsedFile) => {
         if (found[found.length - 1] === "TRANSAKCJI") {
           found = found.slice(0, -2);
         }
-        console.log(found);
         checked = temp.findIndex((el) => el.item === found.join(" "));
         if (checked < 0) {
           temp.push({
@@ -141,6 +140,5 @@ export const prepareExpensesData = (parsedFile) => {
       }
     });
   }
-  console.log(temp);
   return temp.sort((a, b) => a.amount - b.amount);
 };

@@ -16,7 +16,6 @@ export default function AddCardModal(props) {
       ...newCard,
       [name]: event.target.value,
     }));
-    console.log(event.target.value);
   };
 
   return (

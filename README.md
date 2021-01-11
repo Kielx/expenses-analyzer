@@ -167,7 +167,7 @@ Project Link: [https://github.com/Kielx/expenses-analyzer](https://github.com/Ki
 [stars-url]: https://github.com/Kielx/expenses-analyzer/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Kielx/expenses-analyzer.svg?style=for-the-badge
 [issues-url]: https://github.com/Kielx/expenses-analyzer/issues
-[license-shield]: https://img.shields.io/github/license/Kielx/expenses-analyzer.svg?style=for-the-badge
-[license-url]: https://github.com/Kielx/expenses-analyzer/blob/master/LICENSE
+[license-shield]: https://img.shields.io/github/license/Kielx/expenses-analyzer?style=for-the-badge
+[license-url]: https://img.shields.io/github/license/Kielx/expenses-analyzer?style=for-the-badge
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/Kielx

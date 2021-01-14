@@ -3,6 +3,7 @@ import Papa from "papaparse";
 export const readParseCSVFile = (event) => {
   return new Promise((res, rej) => {
     const file = event.target.files[0];
+    console.log(file);
     const reader = new FileReader();
     if (file) {
       reader.readAsText(file, "CP1250");

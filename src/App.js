@@ -3,6 +3,7 @@ import { React, useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
 
 import MainChart from "./components/MainChart";
 import MainNavbar from "./components/MainNavbar";
@@ -19,7 +20,6 @@ import {
 } from "./Utils";
 import DynamicCard from "./components/DynamicCard";
 import AddCardModal from "./components/AddCardModal";
-import ExpensesTable from "./components/ExpensesTable";
 
 function App() {
   const [parsed, setParsed] = useState("");
@@ -66,7 +66,7 @@ function App() {
     });
 
   useEffect(() => {
-    if (parsed.length !== 0) {
+    if (parsed && parsed.length !== 0) {
       setGraphData(parseDataForGraphUsage(parsed));
     }
   }, [parsed]);
@@ -125,16 +125,19 @@ function App() {
         <br />
         <Row>{displayCards(cards)}</Row>
         <hr />
-        <h3>Top 10 expenses in selected time period: </h3>
+        <h3> </h3>
         <br />
         {parsed ? (
           <Row>
-            <Col md={12} xl={6} style={{ minHeight: "20em" }}>
-              <MyResponsivePie data={onceAgainMapped}></MyResponsivePie>
-            </Col>
-
-            <Col md={12} xl={6}>
-              <ExpensesTable data={prepareExpensesData(parsed)}></ExpensesTable>
+            <Col xl={4}>
+              <Card>
+                <Card.Header>
+                  Top 10 expenses in selected time period:
+                </Card.Header>
+                <Card.Body style={{ minHeight: "20em" }}>
+                  <MyResponsivePie data={onceAgainMapped}></MyResponsivePie>
+                </Card.Body>
+              </Card>
             </Col>
           </Row>
         ) : (

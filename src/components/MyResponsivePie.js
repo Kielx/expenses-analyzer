@@ -27,23 +27,23 @@ export default function MyResponsivePie(props) {
 
   const generateColors = (color) => {
     const colorArray = [];
-    let val = 5;
+    let val = -25;
 
     props.data.forEach((col) => {
       colorArray.push(adjust(color, val));
-      val += 10;
+      val += 20;
     });
     return colorArray;
   };
 
   return (
-    <AutoSizer style={{ width: "100%", height: "10%" }}>
+    <AutoSizer style={{ width: "100%" }}>
       {({ height, width }) => (
         <Pie
           height={height}
           width={width}
           data={props.data}
-          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+          margin={{ top: 20, right: 5, bottom: 20, left: 5 }}
           innerRadius={0.8}
           padAngle={2}
           cornerRadius={0}

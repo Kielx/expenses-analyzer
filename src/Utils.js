@@ -3,7 +3,6 @@ import Papa from "papaparse";
 export const readParseCSVFile = (event) => {
   return new Promise((res, rej) => {
     const file = event.target.files[0];
-    console.log(file);
     const reader = new FileReader();
     if (file) {
       reader.readAsText(file, "CP1250");
@@ -127,10 +126,12 @@ export const prepareExpensesData = (parsedFile) => {
         if (found[found.length - 1] === "TRANSAKCJI") {
           found = found.slice(0, -2);
         }
-        checked = temp.findIndex((el) => el.item === found.join(" "));
+        checked = temp.findIndex(
+          (el) => el.item === found.join(" ").toUpperCase()
+        );
         if (checked < 0) {
           temp.push({
-            item: found.join(" "),
+            item: found.join(" ").toUpperCase(),
             amount: parseFloat(item["#Kwota"].replace(" ", "")),
           });
         } else {

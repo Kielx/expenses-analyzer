@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import AddFileModal from "./AddFileModal";
 import Nav from "react-bootstrap/Nav";
+import { defaultFile } from "../defaultFile";
 
 export default function MainNavbar(props) {
   return (
@@ -14,7 +15,12 @@ export default function MainNavbar(props) {
         <Nav className="d-none d-lg-block">
           <h2 style={{ color: "white" }}>Expenses Analyzer</h2>
         </Nav>
-        <Nav className="ml-auto">
+        <Nav variant="tabs" className="ml-auto">
+          <Nav.Item>
+            <Nav.Link onClick={() => props.setParsed(defaultFile)}>
+              Load default file
+            </Nav.Link>
+          </Nav.Item>
           <AddFileModal
             parsed={props.parsed}
             setParsed={props.setParsed}

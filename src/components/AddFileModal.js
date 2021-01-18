@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Nav from "react-bootstrap/Nav";
 import { readParseCSVFile } from "../Utils";
 
 export default function AddFileModal(props) {
@@ -12,9 +13,9 @@ export default function AddFileModal(props) {
 
   return (
     <>
-      <Button variant="outline-light" onClick={handleShow}>
+      <Nav.Link variant="outline-light" onClick={handleShow}>
         Choose a file to analyze
-      </Button>
+      </Nav.Link>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

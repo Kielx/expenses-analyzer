@@ -58,6 +58,7 @@ function App() {
 
   const prepareTop10Expenses = prepareExpensesData(parsed)
     .slice(0, 10)
+    .filter((item) => item.amount < 0)
     .map((item) => {
       return {
         id: item.item,

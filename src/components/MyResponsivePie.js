@@ -31,7 +31,7 @@ export default function MyResponsivePie(props) {
 
     props.data.forEach((col) => {
       colorArray.push(adjust(color, val));
-      val += 20;
+      val += 15;
     });
     return colorArray;
   };
@@ -47,7 +47,7 @@ export default function MyResponsivePie(props) {
           innerRadius={0.8}
           padAngle={2}
           cornerRadius={0}
-          colors={generateColors("#E74C3C")}
+          colors={generateColors(props.color)}
           borderWidth={1}
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
           enableRadialLabels={false}

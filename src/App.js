@@ -56,7 +56,7 @@ function App() {
     return mappedCards;
   };
 
-  const onceAgainMapped = prepareExpensesData(parsed)
+  const prepareTop10Expenses = prepareExpensesData(parsed)
     .slice(0, 10)
     .map((item) => {
       return {
@@ -65,6 +65,15 @@ function App() {
       };
     });
 
+  const prepareTop10Incomes = prepareExpensesData(parsed)
+    .slice(-10)
+    .filter((item) => item.amount > 0)
+    .map((item) => {
+      return {
+        id: item.item,
+        value: Math.abs(item.amount),
+      };
+    });
   useEffect(() => {
     if (parsed && parsed.length !== 0) {
       setGraphData(parseDataForGraphUsage(parsed));
@@ -132,10 +141,34 @@ function App() {
             <Col xl={4}>
               <Card>
                 <Card.Header>
-                  Top 10 expenses in selected time period:
+                  {`Top ${
+                    prepareTop10Expenses.length >= 10
+                      ? 10
+                      : prepareTop10Expenses.length
+                  } expenses in selected time period:`}
                 </Card.Header>
                 <Card.Body style={{ minHeight: "20em" }}>
-                  <MyResponsivePie data={onceAgainMapped}></MyResponsivePie>
+                  <MyResponsivePie
+                    data={prepareTop10Expenses}
+                    color={"#E74C3C"}
+                  ></MyResponsivePie>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col xl={4}>
+              <Card>
+                <Card.Header>
+                  {`Top ${
+                    prepareTop10Incomes.length >= 10
+                      ? 10
+                      : prepareTop10Incomes.length
+                  } incomes in selected time period:`}
+                </Card.Header>
+                <Card.Body style={{ minHeight: "20em" }}>
+                  <MyResponsivePie
+                    data={prepareTop10Incomes}
+                    color={"#18BC9C"}
+                  ></MyResponsivePie>
                 </Card.Body>
               </Card>
             </Col>

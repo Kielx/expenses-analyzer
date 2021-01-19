@@ -70,13 +70,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Expenses analyzer is a React-based app, that when fully functional will be able to analyze user uploaded bank statements in .csv format (and maybe others) and present you with some useful insights about the data.
-
-### Features planned:
-* Graph displaying over time incomes/expenses analysis
-* Insights about particular expenses
-* Amounts spent on particular type of activity (eg. food, electronics, leisure)
-
+Expenses analyzer is a React-based app, that allows the user to analyze bank statements from (at the moment) polish Mbank bank accounts.
 
 ### Built With
 
@@ -121,9 +115,19 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
+
+### Current state of app:
+In current state Expenses-Analyzer allows users to do basic analysis of Polish MBank account data extracted from bank. 
+I provided the app with 'load default data' button, that presents some data to show how app works.
+
+### Features planned/TODO:
+- [x] Graph displaying over time incomes/expenses analysis
+- [ ] Insights about particular expenses
+- [x] Amounts spent on particular type of activity (eg. food, electronics, leisure)
+- [ ] Routes
+- [ ] Polish translation (since it supports only polish MBank account data for now)
+
 See the [open issues](https://github.com/Kielx/expenses-analyzer/issues) for a list of proposed features (and known issues).
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -148,7 +152,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - kielx.dev@gmail.com
+Kielx.dev@gmail.com
 
 Project Link: [https://github.com/Kielx/expenses-analyzer](https://github.com/Kielx/expenses-analyzer)
 

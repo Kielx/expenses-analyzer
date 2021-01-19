@@ -38,6 +38,8 @@
   </p>
 </p>
 
+![AppScreenshot](https://raw.github.com/Kielx/expenses-analyzer/screenshots/screenshots/main.png?raw=true "Optional Title")
+
 
 
 <!-- TABLE OF CONTENTS -->

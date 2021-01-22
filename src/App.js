@@ -16,7 +16,8 @@ import {
   parseDataForGraphUsage,
   logExpenses,
   calculateBalance,
-  prepareExpensesData,
+  prepareTop10Expenses,
+  prepareTop10Incomes,
 } from "./Utils";
 import DynamicCard from "./components/DynamicCard";
 import AddCardModal from "./components/AddCardModal";
@@ -24,7 +25,6 @@ import AddCardModal from "./components/AddCardModal";
 function App() {
   const [parsed, setParsed] = useState("");
   const [graphData, setGraphData] = useState([]);
-
   const [cards, setCards] = useState([
     {
       cardHeader: "Mcdonalds",
@@ -56,25 +56,6 @@ function App() {
     return mappedCards;
   };
 
-  const prepareTop10Expenses = prepareExpensesData(parsed)
-    .slice(0, 10)
-    .filter((item) => item.amount < 0)
-    .map((item) => {
-      return {
-        id: item.item,
-        value: Math.abs(item.amount),
-      };
-    });
-
-  const prepareTop10Incomes = prepareExpensesData(parsed)
-    .slice(-10)
-    .filter((item) => item.amount > 0)
-    .map((item) => {
-      return {
-        id: item.item,
-        value: Math.abs(item.amount),
-      };
-    });
   useEffect(() => {
     if (parsed && parsed.length !== 0) {
       setGraphData(parseDataForGraphUsage(parsed));
@@ -84,11 +65,9 @@ function App() {
   return (
     <div className="App">
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
-
-      <Container>
+      <Container fluid style={{ width: "90%" }}>
         <br />
         <h3>Dashboard</h3>
-
         <Row>
           <MainChart graphData={graphData}></MainChart>
         </Row>
@@ -143,14 +122,14 @@ function App() {
               <Card>
                 <Card.Header>
                   {`Top ${
-                    prepareTop10Expenses.length >= 10
+                    prepareTop10Expenses(parsed).length >= 10
                       ? 10
-                      : prepareTop10Expenses.length
+                      : prepareTop10Expenses(parsed).length
                   } expenses in selected time period:`}
                 </Card.Header>
                 <Card.Body style={{ minHeight: "20em" }}>
                   <MyResponsivePie
-                    data={prepareTop10Expenses}
+                    data={prepareTop10Expenses(parsed)}
                     color={"#E74C3C"}
                   ></MyResponsivePie>
                 </Card.Body>
@@ -160,14 +139,14 @@ function App() {
               <Card>
                 <Card.Header>
                   {`Top ${
-                    prepareTop10Incomes.length >= 10
+                    prepareTop10Incomes(parsed).length >= 10
                       ? 10
-                      : prepareTop10Incomes.length
+                      : prepareTop10Incomes(parsed).length
                   } incomes in selected time period:`}
                 </Card.Header>
                 <Card.Body style={{ minHeight: "20em" }}>
                   <MyResponsivePie
-                    data={prepareTop10Incomes}
+                    data={prepareTop10Incomes(parsed)}
                     color={"#18BC9C"}
                   ></MyResponsivePie>
                 </Card.Body>

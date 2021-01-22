@@ -144,3 +144,25 @@ export const prepareExpensesData = (parsedFile) => {
   }
   return temp.sort((a, b) => a.amount - b.amount);
 };
+
+export const prepareTop10Expenses = (parsedData) =>
+  prepareExpensesData(parsedData)
+    .slice(0, 10)
+    .filter((item) => item.amount < 0)
+    .map((item) => {
+      return {
+        id: item.item,
+        value: Math.abs(item.amount),
+      };
+    });
+
+export const prepareTop10Incomes = (parsedData) =>
+  prepareExpensesData(parsedData)
+    .slice(-10)
+    .filter((item) => item.amount > 0)
+    .map((item) => {
+      return {
+        id: item.item,
+        value: Math.abs(item.amount),
+      };
+    });

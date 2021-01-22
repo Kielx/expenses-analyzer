@@ -25,3 +25,4 @@ yarn-error.log*
 
 src/.Utils.js.swp
 .eslintcache
+src/components/.MyResponsivePie.js.swp

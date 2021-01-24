@@ -5,9 +5,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 
-import MainChart from "./components/MainChart";
 import MainNavbar from "./components/MainNavbar";
-import MainCard from "./components/MainCard";
 import MyResponsivePie from "./components/MyResponsivePie";
 
 import ScrollTopArrow from "./components/ScrollTopArrow";
@@ -15,12 +13,12 @@ import ScrollTopArrow from "./components/ScrollTopArrow";
 import {
   parseDataForGraphUsage,
   logExpenses,
-  calculateBalance,
   prepareTop10Expenses,
   prepareTop10Incomes,
 } from "./Utils";
 import DynamicCard from "./components/DynamicCard";
 import AddCardModal from "./components/AddCardModal";
+import MainOverview from "./components/MainOverview";
 
 function App() {
   const [parsed, setParsed] = useState("");
@@ -67,45 +65,8 @@ function App() {
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
       <Container fluid style={{ width: "90%" }}>
         <br />
-        <h3>Dashboard</h3>
-        <Row>
-          <MainChart graphData={graphData}></MainChart>
-        </Row>
-        <Row>
-          <MainCard
-            cardIcon="far fa-money-bill-alt fa-2x"
-            cardHeader="Income/Losses over time"
-            bg="primary"
-            cardTitle="Total income/losses in selected  time period:"
-            cardText={
-              graphData.length !== 0
-                ? parseInt(calculateBalance(parsed).balance.toFixed(2))
-                : 0
-            }
-          ></MainCard>
-          <MainCard
-            cardIcon="fas fa-arrow-down fa-2x"
-            cardHeader="Total losses"
-            bg="danger"
-            cardTitle="Total losses in selected time period:"
-            cardText={
-              graphData.length !== 0
-                ? parseInt(calculateBalance(parsed).negativeBalance.toFixed(2))
-                : 0
-            }
-          ></MainCard>
-          <MainCard
-            cardIcon="fas fa-arrow-up fa-2x"
-            cardHeader="Total income"
-            bg="success"
-            cardTitle="Total income in selected time period:"
-            cardText={
-              graphData.length !== 0
-                ? parseInt(calculateBalance(parsed).positiveBalance.toFixed(2))
-                : 0
-            }
-          ></MainCard>
-        </Row>
+        <h2>Dashboard</h2>
+        <MainOverview graphData={graphData} parsed={parsed}></MainOverview>
         <hr />
         <div className="d-flex justify-content-between">
           <h3>Custom expense cards: </h3>

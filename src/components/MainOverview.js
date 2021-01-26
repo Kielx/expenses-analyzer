@@ -13,7 +13,7 @@ export default function MainOverview(props) {
       <Card.Body>
         <Row>
           <Col
-            md={{ span: 2, order: "first" }}
+            lg={{ span: 2, order: "first" }}
             xs={{ span: 12, order: "last" }}
             className="mainOverviewFirstColumn"
           >
@@ -64,7 +64,11 @@ export default function MainOverview(props) {
             </h3>
             <h4 style={{ color: "#B5B7D0" }}>Losses</h4>
           </Col>
-          <Col xs={12} md={10}>
+          <Col
+            lg={10}
+            xs={{ span: 12, order: "first" }}
+            style={{ minHeight: "25vh" }}
+          >
             <MainChart graphData={props.graphData}></MainChart>
           </Col>
         </Row>

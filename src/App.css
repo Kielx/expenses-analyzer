@@ -39,3 +39,9 @@ body {
   animation: htmlFadeIn 0.5s;
   transition: opacity 0.5s;
 }
+
+@media only screen and (max-width: 600px) {
+  .mainOverviewFirstColumn {
+    margin-top: 3vh;
+  }
+}

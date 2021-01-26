@@ -30,7 +30,11 @@ export default function DynamicCard(props) {
           <Card.Title>{props.cardTitle}</Card.Title>
           <Card.Text>
             {props.cardText ? (
-              <CountUp end={props.cardText} duration={1}></CountUp>
+              <CountUp
+                end={props.cardText}
+                duration={1}
+                suffix={"zł"}
+              ></CountUp>
             ) : (
               "Current file contains no data about selected item."
             )}

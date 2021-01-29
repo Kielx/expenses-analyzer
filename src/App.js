@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 
 import MainNavbar from "./components/MainNavbar";
 import MyResponsivePie from "./components/MyResponsivePie";
+import HelloModal from "./components/HelloModal";
 
 import ScrollTopArrow from "./components/ScrollTopArrow";
 
@@ -62,6 +63,7 @@ function App() {
 
   return (
     <div className="App">
+      <HelloModal></HelloModal>
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
       <Container fluid style={{ width: "90%" }}>
         <br />

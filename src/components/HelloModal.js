@@ -5,22 +5,21 @@ import Form from "react-bootstrap/Form";
 
 export default function HelloModal(props) {
   const [show, setShow] = useState(true);
-  const [doNotShowAgain, setDoNotShowAgain] = useState(
-    // eslint-disable-next-line eqeqeq
-    localStorage.getItem("doNotShowAgain")?.toLowerCase() == "true" || false
-  );
-
+  const [doNotShowAgain, setDoNotShowAgain] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    localStorage.setItem("doNotShowAgain", doNotShowAgain);
-  }, [doNotShowAgain]);
+    if (!localStorage.getItem("doNotShowAgain")) {
+      localStorage.setItem("doNotShowAgain", false);
+    }
+  }, []);
 
   return (
     <>
       <Modal
-        show={show && localStorage.getItem("doNotShowAgain") === "false"}
+        // eslint-disable-next-line eqeqeq
+        show={show && localStorage.getItem("doNotShowAgain") == "false"}
         onHide={handleClose}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -58,7 +57,15 @@ export default function HelloModal(props) {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Form style={{ display: "inline-flex" }}>
+          <Form
+            style={{ display: "inline-flex" }}
+            onSubmit={(event) => {
+              event.preventDefault();
+              console.log(event);
+              localStorage.setItem("doNotShowAgain", event.target[0].checked);
+              handleClose();
+            }}
+          >
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check
                 inline
@@ -71,12 +78,7 @@ export default function HelloModal(props) {
               />
             </Form.Group>
 
-            <Button
-              variant="outline-danger"
-              onClick={() => {
-                handleClose();
-              }}
-            >
+            <Button variant="outline-danger" type="submit">
               Close
             </Button>
           </Form>

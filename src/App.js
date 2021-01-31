@@ -65,61 +65,74 @@ function App() {
     <div className="App">
       <HelloModal></HelloModal>
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
-      <Container fluid style={{ width: "90%" }}>
-        <br />
-        <h2>Dashboard</h2>
-        <MainOverview graphData={graphData} parsed={parsed}></MainOverview>
-        <hr />
-        <div className="d-flex justify-content-between">
-          <h3>Custom expense cards: </h3>
-          <AddCardModal setCards={setCards}></AddCardModal>
-        </div>
-        <br />
-        <Row>{displayCards(cards)}</Row>
-        <hr />
-        <h3> </h3>
-        <br />
-        {parsed ? (
-          <Row>
-            <Col xl={4}>
-              <Card>
-                <Card.Header>
-                  {`Top ${
-                    prepareTop10Expenses(parsed).length >= 10
-                      ? 10
-                      : prepareTop10Expenses(parsed).length
-                  } expenses in selected time period:`}
-                </Card.Header>
-                <Card.Body style={{ minHeight: "20em" }}>
-                  <MyResponsivePie
-                    data={prepareTop10Expenses(parsed)}
-                    color={"#E74C3C"}
-                  ></MyResponsivePie>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col xl={4}>
-              <Card>
-                <Card.Header>
-                  {`Top ${
-                    prepareTop10Incomes(parsed).length >= 10
-                      ? 10
-                      : prepareTop10Incomes(parsed).length
-                  } incomes in selected time period:`}
-                </Card.Header>
-                <Card.Body style={{ minHeight: "20em" }}>
-                  <MyResponsivePie
-                    data={prepareTop10Incomes(parsed)}
-                    color={"#18BC9C"}
-                  ></MyResponsivePie>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        ) : (
-          ""
-        )}
-      </Container>
+      {parsed.length <= 0 ? (
+        <h2
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          Please load a file to analyze
+        </h2>
+      ) : (
+        <Container className="Container" fluid style={{ width: "90%" }}>
+          <br />
+          <h2>Dashboard</h2>
+          <MainOverview graphData={graphData} parsed={parsed}></MainOverview>
+          <hr />
+          <div className="d-flex justify-content-between">
+            <h3>Custom expense cards: </h3>
+            <AddCardModal setCards={setCards}></AddCardModal>
+          </div>
+          <br />
+          <Row>{displayCards(cards)}</Row>
+          <hr />
+          <h3> </h3>
+          <br />
+          {parsed ? (
+            <Row>
+              <Col xl={4}>
+                <Card>
+                  <Card.Header>
+                    {`Top ${
+                      prepareTop10Expenses(parsed).length >= 10
+                        ? 10
+                        : prepareTop10Expenses(parsed).length
+                    } expenses in selected time period:`}
+                  </Card.Header>
+                  <Card.Body style={{ minHeight: "20em" }}>
+                    <MyResponsivePie
+                      data={prepareTop10Expenses(parsed)}
+                      color={"#E74C3C"}
+                    ></MyResponsivePie>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col xl={4}>
+                <Card>
+                  <Card.Header>
+                    {`Top ${
+                      prepareTop10Incomes(parsed).length >= 10
+                        ? 10
+                        : prepareTop10Incomes(parsed).length
+                    } incomes in selected time period:`}
+                  </Card.Header>
+                  <Card.Body style={{ minHeight: "20em" }}>
+                    <MyResponsivePie
+                      data={prepareTop10Incomes(parsed)}
+                      color={"#18BC9C"}
+                    ></MyResponsivePie>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          ) : (
+            ""
+          )}
+        </Container>
+      )}
       <ScrollTopArrow></ScrollTopArrow>
     </div>
   );

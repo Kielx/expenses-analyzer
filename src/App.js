@@ -58,11 +58,12 @@ function App() {
   useEffect(() => {
     if (parsed && parsed.length !== 0) {
       setGraphData(parseDataForGraphUsage(parsed));
+      document.body.style.background = "url('')";
     }
   }, [parsed]);
 
   return (
-    <div className="App">
+    <div className="App ">
       <HelloModal></HelloModal>
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
       {parsed.length <= 0 ? (
@@ -77,8 +78,7 @@ function App() {
           Please load a file to analyze
         </h2>
       ) : (
-        <Container className="Container" fluid style={{ width: "90%" }}>
-          <br />
+        <Container className="Container mt-3" fluid style={{ width: "90%" }}>
           <h2>Dashboard</h2>
           <MainOverview graphData={graphData} parsed={parsed}></MainOverview>
           <hr />
@@ -86,11 +86,11 @@ function App() {
             <h3>Custom expense cards: </h3>
             <AddCardModal setCards={setCards}></AddCardModal>
           </div>
-          <br />
+
           <Row>{displayCards(cards)}</Row>
           <hr />
           <h3> </h3>
-          <br />
+
           {parsed ? (
             <Row>
               <Col xl={4}>

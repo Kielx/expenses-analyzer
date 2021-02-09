@@ -3,7 +3,7 @@ import CountUp from "react-countup";
 
 export default function DashboardInfoCard(props) {
   return (
-    <div className="mb-3">
+    <div className="mb-3 text-lg-left text-center">
       <h3 className="mb-0">
         {props.graphData.length !== 0 ? (
           <CountUp end={props.content} duration={1} suffix={"zł"}></CountUp>

@@ -2,7 +2,6 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import CountUp from "react-countup";
 import MainChart from "./MainChart";
 
 import { calculateBalance } from "../Utils";
@@ -18,36 +17,45 @@ export default function MainOverview(props) {
             xs={{ span: 12, order: "last" }}
             className="mainOverviewFirstColumn"
           >
-            <Col>
-              <DashboardInfoCard
-                graphData={props.graphData}
-                parsed={props.parsed}
-                content={parseInt(
-                  calculateBalance(props.parsed).balance.toFixed(2)
-                )}
-              >
-                Total Balance
-              </DashboardInfoCard>
-              <DashboardInfoCard
-                graphData={props.graphData}
-                parsed={props.parsed}
-                content={parseInt(
-                  calculateBalance(props.parsed).positiveBalance.toFixed(2)
-                )}
-              >
-                Incomes
-              </DashboardInfoCard>
-              <DashboardInfoCard
-                graphData={props.graphData}
-                parsed={props.parsed}
-                content={parseInt(
-                  calculateBalance(props.parsed).negativeBalance.toFixed(2)
-                )}
-              >
-                Expenses
-              </DashboardInfoCard>
-            </Col>
+            <Row>
+              <Col sm={12}>
+                <DashboardInfoCard
+                  graphData={props.graphData}
+                  parsed={props.parsed}
+                  content={parseInt(
+                    calculateBalance(props.parsed).balance.toFixed(2)
+                  )}
+                >
+                  Total Balance
+                </DashboardInfoCard>
+              </Col>
+
+              <Col>
+                <DashboardInfoCard
+                  graphData={props.graphData}
+                  parsed={props.parsed}
+                  content={parseInt(
+                    calculateBalance(props.parsed).positiveBalance.toFixed(2)
+                  )}
+                >
+                  Incomes
+                </DashboardInfoCard>
+              </Col>
+
+              <Col>
+                <DashboardInfoCard
+                  graphData={props.graphData}
+                  parsed={props.parsed}
+                  content={parseInt(
+                    calculateBalance(props.parsed).negativeBalance.toFixed(2)
+                  )}
+                >
+                  Expenses
+                </DashboardInfoCard>
+              </Col>
+            </Row>
           </Col>
+
           <Col
             lg={10}
             xs={{ span: 12, order: "first" }}

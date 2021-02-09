@@ -6,6 +6,7 @@ import CountUp from "react-countup";
 import MainChart from "./MainChart";
 
 import { calculateBalance } from "../Utils";
+import DashboardInfoCard from "./DashboardInfoCard";
 
 export default function MainOverview(props) {
   return (
@@ -17,52 +18,35 @@ export default function MainOverview(props) {
             xs={{ span: 12, order: "last" }}
             className="mainOverviewFirstColumn"
           >
-            <div style={{ display: "inline-flex" }}>
-              <h3>
-                {props.graphData.length !== 0 ? (
-                  <CountUp
-                    end={parseInt(
-                      calculateBalance(props.parsed).balance.toFixed(2)
-                    )}
-                    duration={1}
-                    suffix={"zł"}
-                  ></CountUp>
-                ) : (
-                  0
+            <Col>
+              <DashboardInfoCard
+                graphData={props.graphData}
+                parsed={props.parsed}
+                content={parseInt(
+                  calculateBalance(props.parsed).balance.toFixed(2)
                 )}
-              </h3>
-            </div>
-            <h4 style={{ color: "#B5B7D0" }}>Total Balance</h4>
-            <hr />
-            <h3>
-              {props.graphData.length !== 0 ? (
-                <CountUp
-                  end={parseInt(
-                    calculateBalance(props.parsed).positiveBalance.toFixed(2)
-                  )}
-                  duration={1}
-                  suffix={"zł"}
-                ></CountUp>
-              ) : (
-                0
-              )}
-            </h3>
-            <h4 style={{ color: "#B5B7D0" }}>Income</h4>
-            <hr />
-            <h3>
-              {props.graphData.length !== 0 ? (
-                <CountUp
-                  end={parseInt(
-                    calculateBalance(props.parsed).negativeBalance.toFixed(2)
-                  )}
-                  duration={1}
-                  suffix={"zł"}
-                ></CountUp>
-              ) : (
-                0
-              )}
-            </h3>
-            <h4 style={{ color: "#B5B7D0" }}>Losses</h4>
+              >
+                Total Balance
+              </DashboardInfoCard>
+              <DashboardInfoCard
+                graphData={props.graphData}
+                parsed={props.parsed}
+                content={parseInt(
+                  calculateBalance(props.parsed).positiveBalance.toFixed(2)
+                )}
+              >
+                Incomes
+              </DashboardInfoCard>
+              <DashboardInfoCard
+                graphData={props.graphData}
+                parsed={props.parsed}
+                content={parseInt(
+                  calculateBalance(props.parsed).negativeBalance.toFixed(2)
+                )}
+              >
+                Expenses
+              </DashboardInfoCard>
+            </Col>
           </Col>
           <Col
             lg={10}

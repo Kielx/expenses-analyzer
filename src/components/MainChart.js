@@ -5,7 +5,6 @@ import {
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
@@ -16,17 +15,16 @@ export default function MainChart(props) {
       <AreaChart
         width={1200}
         data={props.graphData}
-        margin={{ right: 5, bottom: 5 }}
+        margin={{ right: 0, bottom: 0 }}
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#18BC9C" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#18BC9C" stopOpacity={0.2} />
+            <stop offset="90%" stopColor="#18BC9C" stopOpacity={0} />
           </linearGradient>
         </defs>
         <XAxis hide={true} dataKey="x" angle={30} dx={20} dy={20} />
-        <YAxis domain={["auto", "auto"]} />
-        <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+        <YAxis hide={true} domain={["auto", "auto"]} />
 
         <Area
           type="monotone"

@@ -12,6 +12,7 @@ export default function DashboardInfoCard(props) {
         )}
       </h3>
       <h4 style={{ color: "#B5B7D0" }}>{props.children}</h4>
+      <hr />
     </div>
   );
 }

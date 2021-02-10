@@ -51,8 +51,8 @@ html {
   min-height: 100%;
 }
 body {
-  background: url(./images/NoFileUploadedBG.svg) center no-repeat;
-  background-size: cover;
+  background: url(./images/NoFileUploadedBG2.svg) center no-repeat;
+  background-size: contain;
 
   background-color: rgba(255, 255, 255, 0.97);
   background-blend-mode: lighten;

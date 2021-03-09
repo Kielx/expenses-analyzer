@@ -58,12 +58,12 @@ function App() {
   useEffect(() => {
     if (parsed && parsed.length !== 0) {
       setGraphData(parseDataForGraphUsage(parsed));
-      document.body.style.background = "url('')";
+      document.body.style.backgroundColor = "#F5F6FA";
     }
   }, [parsed]);
 
   return (
-    <div className="App ">
+    <Container className="App Container mt-3" fluid style={{ width: "95%" }}>
       <HelloModal></HelloModal>
       <MainNavbar parsed={parsed} setParsed={setParsed}></MainNavbar>
       {parsed.length <= 0 ? (
@@ -78,23 +78,23 @@ function App() {
           Please load a file to analyze
         </h2>
       ) : (
-        <Container className="Container mt-3" fluid style={{ width: "90%" }}>
+        <>
           <h2>Dashboard</h2>
           <MainOverview graphData={graphData} parsed={parsed}></MainOverview>
-          <hr />
+
           <div className="d-flex justify-content-between">
             <h3>Custom expense cards: </h3>
             <AddCardModal setCards={setCards}></AddCardModal>
           </div>
 
           <Row>{displayCards(cards)}</Row>
-          <hr />
+
           <h3> </h3>
 
           {parsed ? (
             <Row>
               <Col xl={4}>
-                <Card>
+                <Card className="shadow-sm mb-4">
                   <Card.Header>
                     {`Top ${
                       prepareTop10Expenses(parsed).length >= 10
@@ -111,7 +111,7 @@ function App() {
                 </Card>
               </Col>
               <Col xl={4}>
-                <Card>
+                <Card className="shadow-sm">
                   <Card.Header>
                     {`Top ${
                       prepareTop10Incomes(parsed).length >= 10
@@ -131,10 +131,10 @@ function App() {
           ) : (
             ""
           )}
-        </Container>
+        </>
       )}
       <ScrollTopArrow></ScrollTopArrow>
-    </div>
+    </Container>
   );
 }
 

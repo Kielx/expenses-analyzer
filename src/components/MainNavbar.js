@@ -6,16 +6,16 @@ import { defaultFile } from "../defaultFile";
 
 export default function MainNavbar(props) {
   return (
-    <Navbar expand="lg" variant="dark" bg="primary">
+    <Navbar expand="lg" className="pb-4">
       <Navbar.Brand href="#home">
         <i className="fas fa-chart-pie fa-2x"></i>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="d-none d-lg-block">
-          <h2 style={{ color: "white" }}>Expenses Analyzer</h2>
+          <h2 style={{ color: "black" }}>Expenses Analyzer</h2>
         </Nav>
-        <Nav variant="tabs" className="ml-auto">
+        <Nav variant="pills" className="ml-auto">
           <Nav.Item>
             <Nav.Link onClick={() => props.setParsed(defaultFile)}>
               Load default file

@@ -10,7 +10,7 @@ export default function DynamicCard(props) {
       <Card
         style={{ animation: "htmlFadeIn 0.5s", transition: "opacity 0.5s" }}
         bg={props.bg ? props.bg : ""}
-        className="mb-2"
+        className="mb-4 shadow-sm"
         text={props.bg === "light" || !props.bg ? "dark" : "white"}
       >
         <Card.Header as="h5" className={"d-flex justify-content-between"}>

@@ -49,11 +49,8 @@ body {
 body,
 html {
   min-height: 100%;
+  font-family: "Poppins", sans-serif;
 }
 body {
-  background: url(./images/NoFileUploadedBG2.svg) center no-repeat;
-  background-size: contain;
-
-  background-color: rgba(255, 255, 255, 0.97);
-  background-blend-mode: lighten;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }

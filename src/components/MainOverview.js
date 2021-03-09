@@ -9,58 +9,46 @@ import DashboardInfoCard from "./DashboardInfoCard";
 
 export default function MainOverview(props) {
   return (
-    <Card>
-      <Card.Body>
+    <Card className="shadow-sm mb-4">
+      <Card.Body className="px-0">
         <Row>
-          <Col
-            lg={{ span: 2, order: "first" }}
-            xs={{ span: 12, order: "last" }}
-            className="mainOverviewFirstColumn"
-          >
-            <Row>
-              <Col sm={12}>
-                <DashboardInfoCard
-                  graphData={props.graphData}
-                  parsed={props.parsed}
-                  content={parseInt(
-                    calculateBalance(props.parsed).balance.toFixed(2)
-                  )}
-                >
-                  Total Balance
-                </DashboardInfoCard>
-              </Col>
-
-              <Col>
-                <DashboardInfoCard
-                  graphData={props.graphData}
-                  parsed={props.parsed}
-                  content={parseInt(
-                    calculateBalance(props.parsed).positiveBalance.toFixed(2)
-                  )}
-                >
-                  Incomes
-                </DashboardInfoCard>
-              </Col>
-
-              <Col>
-                <DashboardInfoCard
-                  graphData={props.graphData}
-                  parsed={props.parsed}
-                  content={parseInt(
-                    calculateBalance(props.parsed).negativeBalance.toFixed(2)
-                  )}
-                >
-                  Expenses
-                </DashboardInfoCard>
-              </Col>
-            </Row>
+          <Col sm={4} className="d-flex justify-content-center">
+            <DashboardInfoCard
+              graphData={props.graphData}
+              parsed={props.parsed}
+              content={parseInt(
+                calculateBalance(props.parsed).balance.toFixed(2)
+              )}
+            >
+              Total Balance
+            </DashboardInfoCard>
           </Col>
 
-          <Col
-            lg={10}
-            xs={{ span: 12, order: "first" }}
-            style={{ minHeight: "25vh" }}
-          >
+          <Col sm={4} className="d-flex justify-content-center">
+            <DashboardInfoCard
+              graphData={props.graphData}
+              parsed={props.parsed}
+              content={parseInt(
+                calculateBalance(props.parsed).positiveBalance.toFixed(2)
+              )}
+            >
+              Incomes
+            </DashboardInfoCard>
+          </Col>
+
+          <Col sm={4} className="d-flex justify-content-center">
+            <DashboardInfoCard
+              graphData={props.graphData}
+              parsed={props.parsed}
+              content={parseInt(
+                calculateBalance(props.parsed).negativeBalance.toFixed(2)
+              )}
+            >
+              Expenses
+            </DashboardInfoCard>
+          </Col>
+
+          <Col style={{ minHeight: "25vh" }}>
             <MainChart graphData={props.graphData}></MainChart>
           </Col>
         </Row>

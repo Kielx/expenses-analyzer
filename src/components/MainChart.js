@@ -11,7 +11,7 @@ import {
 
 export default function MainChart(props) {
   return (
-    <ResponsiveContainer width={"99%"}>
+    <ResponsiveContainer>
       <AreaChart
         width={1200}
         data={props.graphData}
@@ -19,8 +19,8 @@ export default function MainChart(props) {
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#18BC9C" stopOpacity={0.8} />
-            <stop offset="90%" stopColor="#18BC9C" stopOpacity={0} />
+            <stop offset="5%" stopColor="#2780E3" stopOpacity={0.4} />
+            <stop offset="90%" stopColor="#2780E3" stopOpacity={0} />
           </linearGradient>
         </defs>
         <XAxis hide={true} dataKey="x" angle={30} dx={20} dy={20} />
@@ -29,7 +29,7 @@ export default function MainChart(props) {
         <Area
           type="monotone"
           dataKey="y"
-          stroke="#00A383"
+          stroke="#2780E3"
           fillOpacity={1}
           fill="url(#colorUv)"
           name="Balance"

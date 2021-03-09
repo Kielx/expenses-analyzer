@@ -82,18 +82,9 @@ function App() {
           <h2>Dashboard</h2>
           <MainOverview graphData={graphData} parsed={parsed}></MainOverview>
 
-          <div className="d-flex justify-content-between">
-            <h3>Custom expense cards: </h3>
-            <AddCardModal setCards={setCards}></AddCardModal>
-          </div>
-
-          <Row>{displayCards(cards)}</Row>
-
-          <h3> </h3>
-
           {parsed ? (
             <Row>
-              <Col xl={4}>
+              <Col xl={3}>
                 <Card className="shadow-sm mb-4">
                   <Card.Header>
                     {`Top ${
@@ -110,7 +101,7 @@ function App() {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col xl={4}>
+              <Col xl={3}>
                 <Card className="shadow-sm">
                   <Card.Header>
                     {`Top ${
@@ -122,7 +113,7 @@ function App() {
                   <Card.Body style={{ minHeight: "20em" }}>
                     <MyResponsivePie
                       data={prepareTop10Incomes(parsed)}
-                      color={"#18BC9C"}
+                      color={"#2780E3"}
                     ></MyResponsivePie>
                   </Card.Body>
                 </Card>
@@ -131,6 +122,13 @@ function App() {
           ) : (
             ""
           )}
+
+          <div className="d-flex justify-content-between">
+            <h3>Custom expense cards: </h3>
+            <AddCardModal setCards={setCards}></AddCardModal>
+          </div>
+
+          <Row>{displayCards(cards)}</Row>
         </>
       )}
       <ScrollTopArrow></ScrollTopArrow>

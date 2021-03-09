@@ -4,6 +4,7 @@ import { Row, Col, Container, Card, Button } from "react-bootstrap";
 import MainNavbar from "./components/MainNavbar";
 import MyResponsivePie from "./components/MyResponsivePie";
 import HelloModal from "./components/HelloModal";
+import SecondaryChart from "./components/SecondaryChart";
 
 import ScrollTopArrow from "./components/ScrollTopArrow";
 
@@ -12,6 +13,7 @@ import {
   logExpenses,
   prepareTop10Expenses,
   prepareTop10Incomes,
+  parseDataForGraphUsageIncome,
 } from "./Utils";
 import DynamicCard from "./components/DynamicCard";
 import AddCardModal from "./components/AddCardModal";
@@ -20,6 +22,7 @@ import MainOverview from "./components/MainOverview";
 function App() {
   const [parsed, setParsed] = useState("");
   const [graphData, setGraphData] = useState([]);
+  const [graphDataIncome, setGraphDataIncome] = useState([]);
   const [cards, setCards] = useState([
     {
       cardHeader: "Mcdonalds",
@@ -54,7 +57,7 @@ function App() {
   useEffect(() => {
     if (parsed && parsed.length !== 0) {
       setGraphData(parseDataForGraphUsage(parsed));
-      document.body.style.backgroundColor = "#F5F6FA";
+      setGraphDataIncome(parseDataForGraphUsageIncome(parsed));
     }
   }, [parsed]);
 
@@ -79,7 +82,7 @@ function App() {
           <MainOverview graphData={graphData} parsed={parsed}></MainOverview>
 
           {parsed ? (
-            <Row>
+            <Row className=" mb-4">
               <Col xl={3}>
                 <Card className="shadow-sm mb-4">
                   <Card.Header>
@@ -111,6 +114,25 @@ function App() {
                       data={prepareTop10Incomes(parsed)}
                       color={"#2780E3"}
                     ></MyResponsivePie>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col xl={6}>
+                <Card className="shadow-sm">
+                  <Card.Header>
+                    {`Incomes/Expenses in selected time:`}
+                  </Card.Header>
+                  <Card.Body
+                    className="p-0"
+                    style={{
+                      height: "20em",
+                    }}
+                  >
+                    <SecondaryChart
+                      graphData={graphDataIncome}
+                      color={"#2780E3"}
+                    ></SecondaryChart>
                   </Card.Body>
                 </Card>
               </Col>

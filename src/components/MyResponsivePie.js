@@ -56,7 +56,7 @@ export default function MyResponsivePie(props) {
           radialLabelsLinkColor={{ from: "color" }}
           sliceLabelsSkipAngle={10}
           radialLabelsLinkDiagonalLength={5}
-          sliceLabelsTextColor="#333333"
+          sliceLabelsTextColor="white"
           sortByValue={true}
           defs={[
             {

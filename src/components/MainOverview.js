@@ -10,7 +10,7 @@ import DashboardInfoCard from "./DashboardInfoCard";
 export default function MainOverview(props) {
   return (
     <Card className="shadow-sm mb-4">
-      <Card.Body className="px-0">
+      <Card.Body className="p-0 pt-2">
         <Row>
           <Col sm={4} className="d-flex justify-content-center">
             <DashboardInfoCard

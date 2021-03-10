@@ -7,6 +7,7 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  Brush,
 } from "recharts";
 
 export default function MainChart(props) {
@@ -37,6 +38,7 @@ export default function MainChart(props) {
           strokeWidth={2}
         />
         <Tooltip />
+        <Brush dataKey="x" height={20} stroke="#2780E3" />
       </AreaChart>
     </ResponsiveContainer>
   );

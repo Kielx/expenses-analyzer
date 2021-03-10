@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Row, Col, Container, Card, Button } from "react-bootstrap";
+import { Row, Col, Container, Card } from "react-bootstrap";
 
 import MainNavbar from "./components/MainNavbar";
 import MyResponsivePie from "./components/MyResponsivePie";

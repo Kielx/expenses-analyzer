@@ -38,7 +38,7 @@ export default function MainChart(props) {
           strokeWidth={2}
         />
         <Tooltip />
-        <Brush dataKey="x" height={20} stroke="#2780E3" />
+        <Brush dataKey="x" height={20} stroke="#2780E3" travellerWidth={20} />
       </AreaChart>
     </ResponsiveContainer>
   );

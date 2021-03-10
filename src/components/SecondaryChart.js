@@ -27,7 +27,7 @@ export default function SecondaryChart(props) {
           strokeWidth={1.5}
         />
         <Tooltip />
-        <Brush dataKey="x" height={20} stroke="#2780E3" />
+        <Brush dataKey="x" height={20} stroke="#2780E3" travellerWidth={20} />
       </BarChart>
     </ResponsiveContainer>
   );

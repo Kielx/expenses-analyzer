@@ -2,7 +2,7 @@
   "name": "expenses-analyzer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Kielx.github.io/expenses-analyzer",
+  "homepage": "https://expenses-analyzer.pantak.net",
   "dependencies": {
     "@nivo/core": "^0.67.0",
     "@nivo/pie": "^0.67.0",

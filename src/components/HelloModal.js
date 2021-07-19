@@ -7,6 +7,7 @@ export default function HelloModal(props) {
   const [show, setShow] = useState(true);
   const [doNotShowAgain, setDoNotShowAgain] = useState(false);
   const handleClose = () => setShow(false);
+  // eslint-disable-next-line no-unused-vars
   const handleShow = () => setShow(true);
 
   useEffect(() => {
